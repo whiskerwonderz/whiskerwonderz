@@ -12,7 +12,7 @@
       --bg: #f5f1eb;
       --bg-dark: #ebe5db;
       --text: #1a1a1a;
-      --text-muted: #6b6560;
+      --text-muted: #5a5550;
       --accent: #2a2a2a;
     }
 
@@ -62,10 +62,17 @@
     }
 
     .cat-logo {
-      width: 80px;
+      width: 65px;
       height: auto;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       opacity: 0.9;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .cat-logo:hover {
+      transform: scale(1.05);
+      opacity: 1;
     }
 
     .site-title {
@@ -84,13 +91,27 @@
       letter-spacing: 0.02em;
     }
 
-    /* Divider */
+    /* Paw Trail Divider */
     .divider {
-      width: 60px;
-      height: 1px;
-      background: var(--text);
-      opacity: 0.2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
       margin: 3rem auto;
+      opacity: 0.25;
+    }
+
+    .paw {
+      width: 12px;
+      height: 12px;
+    }
+
+    .paw:nth-child(2) {
+      transform: rotate(15deg);
+    }
+
+    .paw:nth-child(3) {
+      transform: rotate(-10deg);
     }
 
     /* Projects */
@@ -123,10 +144,17 @@
 
     .project-image {
       aspect-ratio: 16 / 10;
-      background: var(--bg-dark);
-      border-radius: 4px;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #e2dcd2 100%);
+      border-radius: 6px;
       overflow: hidden;
       position: relative;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .project:hover .project-image {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
     }
 
     .project-image img {
@@ -167,7 +195,8 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: 0.05em;
-      padding-bottom: 2px;
+      padding: 0.5rem 0;
+      min-height: 44px;
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s ease;
     }
@@ -179,11 +208,23 @@
     .project-link svg {
       width: 14px;
       height: 14px;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .project-link:hover svg {
-      transform: translateX(3px);
+      transform: translateX(5px);
+    }
+
+    /* Spiral animation */
+    @keyframes gentleSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .spiral-icon {
+      display: inline-block;
+      filter: grayscale(1);
+      animation: gentleSpin 8s linear infinite;
     }
 
     /* Footer */
@@ -205,11 +246,24 @@
       text-decoration: none;
       font-size: 0.85rem;
       letter-spacing: 0.05em;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.5rem;
     }
 
     .footer-links a:hover {
       color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .footer-links svg {
+      width: 18px;
+      height: 18px;
     }
 
     .footer-note {
@@ -311,12 +365,12 @@
         gap: 1rem 1.5rem;
       }
 
-      .footer-links a {
-        padding: 0.25rem 0;
+      .footer-links {
+        gap: 0.5rem;
       }
 
-      .footer-note {
-        font-size: 0.85rem;
+      .divider {
+        margin: 2.5rem auto;
       }
     }
 
@@ -355,10 +409,14 @@
         <line x1="65" y1="54" x2="75" y2="55" stroke="#f5f1eb" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <h1 class="site-title">whiskerwonderz</h1>
-      <p class="site-tagline">following curiosity <span style="filter: grayscale(1);">🌀</span> wander off-the-path quests</p>
+      <p class="site-tagline">following curiosity <span class="spiral-icon">🌀</span> wander off-the-path quests</p>
     </header>
 
-    <div class="divider"></div>
+    <div class="divider">
+      <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="4.5" ry="3.5"/><circle cx="6.5" cy="11" r="2"/><circle cx="17.5" cy="11" r="2"/><circle cx="9" cy="7" r="1.8"/><circle cx="15" cy="7" r="1.8"/></svg>
+      <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="4.5" ry="3.5"/><circle cx="6.5" cy="11" r="2"/><circle cx="17.5" cy="11" r="2"/><circle cx="9" cy="7" r="1.8"/><circle cx="15" cy="7" r="1.8"/></svg>
+      <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="4.5" ry="3.5"/><circle cx="6.5" cy="11" r="2"/><circle cx="17.5" cy="11" r="2"/><circle cx="9" cy="7" r="1.8"/><circle cx="15" cy="7" r="1.8"/></svg>
+    </div>
 
     <section class="projects">
       <!-- Project 1: NexusMindMap -->
@@ -422,11 +480,17 @@
 
     <footer>
       <div class="footer-links">
-        <a href="https://twitter.com/whiskerwonderz" target="_blank" rel="noopener">Twitter</a>
-        <a href="https://github.com/whiskerwonderz" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://buymeacoffee.com/whiskerwonderz" target="_blank" rel="noopener">Buy me a coffee</a>
+        <a href="https://twitter.com/whiskerwonderz" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://github.com/whiskerwonderz" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://buymeacoffee.com/whiskerwonderz" target="_blank" rel="noopener" aria-label="Buy me a mylk">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 6l2-4h10l2 4v2H5V6zm0 4h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V10zm4 3v6h2v-6H9zm4 0v6h2v-6h-2z"/></svg>
+        </a>
       </div>
-          </footer>
+    </footer>
   </div>
 </body>
 </html>
