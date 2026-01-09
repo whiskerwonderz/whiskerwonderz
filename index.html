@@ -13,7 +13,6 @@
       --bg-dark: #ebe5db;
       --text: #1a1a1a;
       --text-muted: #5a5550;
-      --accent: #2a2a2a;
     }
 
     * {
@@ -34,7 +33,6 @@
       line-height: 1.6;
     }
 
-    /* Subtle paper texture */
     body::before {
       content: '';
       position: fixed;
@@ -55,7 +53,6 @@
       z-index: 1;
     }
 
-    /* Header */
     header {
       padding: 4rem 0 3rem;
       text-align: center;
@@ -68,6 +65,7 @@
       opacity: 0.9;
       transition: transform 0.3s ease, opacity 0.3s ease;
       cursor: pointer;
+      fill: var(--text);
     }
 
     .cat-logo:hover {
@@ -91,7 +89,14 @@
       letter-spacing: 0.02em;
     }
 
-    /* Paw Trail Divider */
+    .tagline-paw {
+      display: inline-block;
+      vertical-align: middle;
+      opacity: 0.5;
+      width: 12px;
+      height: 12px;
+    }
+
     .divider {
       display: flex;
       justify-content: center;
@@ -106,15 +111,9 @@
       height: 12px;
     }
 
-    .paw:nth-child(2) {
-      transform: rotate(15deg);
-    }
+    .paw:nth-child(2) { transform: rotate(15deg); }
+    .paw:nth-child(3) { transform: rotate(-10deg); }
 
-    .paw:nth-child(3) {
-      transform: rotate(-10deg);
-    }
-
-    /* Projects */
     .projects {
       padding: 2rem 0 4rem;
     }
@@ -131,14 +130,6 @@
         grid-template-columns: 1fr 1.2fr;
         gap: 2.5rem;
         align-items: start;
-      }
-
-      .project:nth-child(even) {
-        direction: rtl;
-      }
-
-      .project:nth-child(even) > * {
-        direction: ltr;
       }
     }
 
@@ -176,14 +167,23 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.6rem;
       font-weight: 400;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0;
       letter-spacing: 0.02em;
     }
 
+    .project-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--text);
+      font-size: 1.05rem;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.2;
+    }
+
     .project-description {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
       line-height: 1.7;
     }
 
@@ -215,10 +215,9 @@
       transform: translateX(5px);
     }
 
-    /* Spiral animation */
     @keyframes gentleSpin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .spiral-icon {
@@ -227,7 +226,6 @@
       animation: gentleSpin 8s linear infinite;
     }
 
-    /* Footer */
     footer {
       padding: 3rem 0 4rem;
       text-align: center;
@@ -238,19 +236,15 @@
       display: flex;
       justify-content: center;
       gap: 2rem;
-      margin-bottom: 2rem;
     }
 
     .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
       transition: color 0.3s ease, transform 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
       min-width: 44px;
       min-height: 44px;
       padding: 0.5rem;
@@ -266,40 +260,9 @@
       height: 18px;
     }
 
-    .footer-note {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    /* Placeholder for images */
-    .placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-    }
-
-    /* Cat silhouette SVG */
-    .cat-silhouette {
-      fill: var(--text);
-    }
-
-    /* Animations */
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     header, .project, footer {
@@ -307,98 +270,32 @@
     }
 
     .project:nth-child(1) { animation-delay: 0.1s; }
-    .project:nth-child(2) { animation-delay: 0.2s; }
-    .project:nth-child(3) { animation-delay: 0.3s; }
-    .project:nth-child(4) { animation-delay: 0.4s; }
 
-    /* Mobile Responsive */
     @media (max-width: 639px) {
-      .container {
-        padding: 0 1.25rem;
-      }
-
-      header {
-        padding: 2.5rem 0 2rem;
-      }
-
-      .cat-logo {
-        width: 60px;
-        margin-bottom: 1rem;
-      }
-
-      .site-tagline {
-        font-size: 0.85rem;
-        line-height: 1.5;
-      }
-
-      .divider {
-        margin: 2rem auto;
-      }
-
-      .projects {
-        padding: 1.5rem 0 3rem;
-      }
-
-      .project {
-        margin-bottom: 3rem;
-        gap: 1rem;
-      }
-
-      .project-name {
-        font-size: 1.4rem;
-      }
-
-      .project-description {
-        font-size: 0.9rem;
-      }
-
-      .project-link {
-        padding: 0.5rem 0;
-      }
-
-      footer {
-        padding: 2rem 0 3rem;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-        gap: 1rem 1.5rem;
-      }
-
-      .footer-links {
-        gap: 0.5rem;
-      }
-
-      .divider {
-        margin: 2.5rem auto;
-      }
+      .container { padding: 0 1.25rem; }
+      header { padding: 2.5rem 0 2rem; }
+      .cat-logo { width: 60px; margin-bottom: 1rem; }
+      .site-tagline { font-size: 0.85rem; line-height: 1.5; }
+      .divider { margin: 2.5rem auto; }
+      .projects { padding: 1.5rem 0 3rem; }
+      .project { margin-bottom: 3rem; gap: 1rem; }
+      .project-name { font-size: 1.4rem; }
+      footer { padding: 2rem 0 3rem; }
+      .footer-links { gap: 0.5rem; }
     }
 
-    /* Small mobile */
     @media (max-width: 380px) {
-      .container {
-        padding: 0 1rem;
-      }
-
-      .site-title {
-        letter-spacing: 0.05em;
-      }
-
-      .site-tagline {
-        font-size: 0.8rem;
-      }
-
-      .footer-links {
-        flex-direction: column;
-        gap: 0.75rem;
-      }
+      .container { padding: 0 1rem; }
+      .site-title { letter-spacing: 0.05em; }
+      .site-tagline { font-size: 0.8rem; }
+      .footer-links { flex-direction: column; gap: 0.75rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <svg class="cat-logo cat-silhouette" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <svg class="cat-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <path d="M50 15 C45 15 42 10 40 5 C40 15 38 20 35 25 C25 25 15 35 15 50 C15 70 30 85 50 85 C70 85 85 70 85 50 C85 35 75 25 65 25 C62 20 60 15 60 5 C58 10 55 15 50 15Z"/>
         <circle cx="38" cy="45" r="3" fill="#f5f1eb"/>
         <circle cx="62" cy="45" r="3" fill="#f5f1eb"/>
@@ -409,7 +306,13 @@
         <line x1="65" y1="54" x2="75" y2="55" stroke="#f5f1eb" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <h1 class="site-title">whiskerwonderz</h1>
-      <p class="site-tagline">following curiosity <svg class="paw" viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="display:inline-block;vertical-align:middle;opacity:0.5;"><ellipse cx="12" cy="16" rx="4.5" ry="3.5"/><circle cx="6.5" cy="11" r="2"/><circle cx="17.5" cy="11" r="2"/><circle cx="9" cy="7" r="1.8"/><circle cx="15" cy="7" r="1.8"/></svg><svg class="paw" viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="display:inline-block;vertical-align:middle;opacity:0.5;"><ellipse cx="12" cy="16" rx="4.5" ry="3.5"/><circle cx="6.5" cy="11" r="2"/><circle cx="17.5" cy="11" r="2"/><circle cx="9" cy="7" r="1.8"/><circle cx="15" cy="7" r="1.8"/></svg> wander off-the-path creations & quests <span class="spiral-icon">🌀</span></p>
+      <p class="site-tagline">
+        following curiosity
+        <svg class="tagline-paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="4.5" ry="3.5"/><circle cx="6.5" cy="11" r="2"/><circle cx="17.5" cy="11" r="2"/><circle cx="9" cy="7" r="1.8"/><circle cx="15" cy="7" r="1.8"/></svg>
+        <svg class="tagline-paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="4.5" ry="3.5"/><circle cx="6.5" cy="11" r="2"/><circle cx="17.5" cy="11" r="2"/><circle cx="9" cy="7" r="1.8"/><circle cx="15" cy="7" r="1.8"/></svg>
+        wander off-the-path creations &amp; quests
+        <span class="spiral-icon">🌀</span>
+      </p>
     </header>
 
     <div class="divider">
@@ -419,27 +322,26 @@
     </div>
 
     <section class="projects">
-      <!-- Project 1: NexusMindMap -->
       <article class="project">
         <div class="project-image">
           <img src="Nexus Mind Map.png" alt="Nexus Mind Map screenshot">
         </div>
         <div class="project-info">
-          <h2 class="project-name" style="margin-bottom: 0;">Nexus Mind Map</h2>
-          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--text); font-size: 1.05rem; margin: 0 0 0.5rem 0; line-height: 1.2;">For builders who travel. Explorers who build.</p>
-          <p class="project-description" style="margin-top: 0;">
-            <span style="font-size: 0.9rem;">Map your builds, learnings, journeys, and ideas<br>and watch the constellations take shape.</span>
+          <h2 class="project-name">Nexus Mind Map</h2>
+          <p class="project-subtitle">For builders who travel. Explorers who build.</p>
+          <p class="project-description">
+            Map your builds, learnings, journeys, and ideas<br>
+            and watch the constellations take shape.
           </p>
           <a href="https://nmm.quest" class="project-link" target="_blank" rel="noopener">
             Visit
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </a>
         </div>
       </article>
-
-          </section>
+    </section>
 
     <footer>
       <div class="footer-links">
